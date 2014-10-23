@@ -1,0 +1,180 @@
+[
+    {
+        "name": "croissant",
+        "reward": 10,
+        "engines": [
+            {
+                "x": 0,
+                "y": -35,
+                "angle": 180,
+                "flip": false,
+                "scale": {
+                    "x": 0.5,
+                    "y": 0.6
+                },
+                "tint": "0x33DD77"
+            }
+        ],
+        "guns": [
+            {
+                "x": -17,
+                "y": 20,
+                "angle": 180,
+                "flip": false,
+                "ammo": {
+                    "type": "rocket",
+                    "velocity": {
+                        "x": 0,
+                        "y": 500
+                    }
+                }
+            },
+            {
+                "x": 17,
+                "y": 20,
+                "angle": 180,
+                "flip": true,
+                "ammo": {
+                    "type": "rocket",
+                    "velocity": {
+                        "x": 0,
+                        "y": 500
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "name": "spider",
+        "reward": 20,
+        "engines": [
+            {
+                "x": -18,
+                "y": -35,
+                "angle": 180,
+                "flip": false,
+                "scale": {
+                    "x": 0.7,
+                    "y": 0.8
+                },
+                "tint": "0x33DD77"
+            },
+            {
+                "x": 18,
+                "y": -35,
+                "angle": 180,
+                "flip": true,
+                "scale": {
+                    "x": 0.7,
+                    "y": 0.8
+                },
+                "tint": "0x33DD77"
+            }
+        ],
+        "guns": [
+            {
+                "x": 0,
+                "y": 30,
+                "angle": 180,
+                "flip": false,
+                "ammo": {
+                    "type": "rocket",
+                    "velocity": {
+                        "x": 0,
+                        "y": 500
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "name": "diadem",
+        "reward": 30,
+        "engines": [
+            {
+                "x": 0,
+                "y": -25,
+                "angle": 180,
+                "flip": false,
+                "scale": {
+                    "x": 0.7,
+                    "y": 0.8
+                },
+                "tint": "0x33DD77"
+            }
+        ],
+        "guns": [
+            {
+                "x": -10,
+                "y": 45,
+                "angle": 180,
+                "flip": false,
+                "ammo": {
+                    "type": "rocket",
+                    "velocity": {
+                        "x": 0,
+                        "y": 500
+                    }
+                }
+            },
+            {
+                "x": 10,
+                "y": 45,
+                "angle": 180,
+                "flip": true,
+                "ammo": {
+                    "type": "rocket",
+                    "velocity": {
+                        "x": 0,
+                        "y": 500
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "name": "batarang",
+        "reward": 40,
+        "engines": [
+            {
+                "x": 0,
+                "y": -35,
+                "angle": 180,
+                "flip": true,
+                "scale": {
+                    "x": 0.7,
+                    "y": 0.8
+                },
+                "tint": "0x33DD77"
+            }
+        ],
+        "guns": [
+            {
+                "x": -22,
+                "y": 25,
+                "angle": 180,
+                "flip": false,
+                "ammo": {
+                    "type": "rocket",
+                    "velocity": {
+                        "x": 0,
+                        "y": 500
+                    }
+                }
+            },
+            {
+                "x": 22,
+                "y": 25,
+                "angle": 180,
+                "flip": true,
+                "ammo": {
+                    "type": "rocket",
+                    "velocity": {
+                        "x": 0,
+                        "y": 500
+                    }
+                }
+            }
+        ]
+    }
+]
