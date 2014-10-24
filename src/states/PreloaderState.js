@@ -50,6 +50,7 @@ Invaders.Preloader.prototype = {
         // hud
         this.load.image('live', 'assets/graphics/hud/lives.png');
         
+        this.load.spritesheet('forkme', 'assets/graphics/forkme.png');
         
         // JSON data
         this.load.json('enemyData', 'assets/json/enemies.json');

@@ -17,6 +17,9 @@ Invaders.GameOver.prototype = {
         
         this.startButton = new TextButton(this.game, Config.MAP_WIDTH / 2, Config.MAP_HEIGHT * 5 / 7, 'Restart game', this.startGame, this);
         this.twitterButton = new TextButton(this.game, Config.MAP_WIDTH / 2, Config.MAP_HEIGHT * 6 / 7 + 40, 'twitter: @fenixb3', this.goToTwitter, this);
+        
+        this.forkMeButton = this.add.button(Config.MAP_WIDTH, 0, 'forkme', this.goToGitHub, this, 0, 0, 0);
+        this.forkMeButton.anchor.setTo(1, 0);
     },
     init: function (points) {
         'use strict';
@@ -51,6 +54,10 @@ Invaders.GameOver.prototype = {
     goToTwitter: function () {
         'use strict';
         window.open('http://twitter.com/fenixb3', '_blank');
+    },
+    goToGitHub: function () {
+        'use strict';
+        window.open('https://github.com/FeniXb3/YASIC', '_blank');
     },
     displayTitle: function () {
         'use strict';

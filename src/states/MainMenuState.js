@@ -13,10 +13,15 @@ Invaders.MainMenu.prototype = {
         this.displayTitle();
         this.displayInfo();
         this.displayMenu();
+        this.displayForkMe();
     },
     startGame: function () {
         'use strict';
         this.game.state.start('Game');
+    },
+    goToGitHub: function () {
+        'use strict';
+        window.open('https://github.com/FeniXb3/YASIC', '_blank');
     },
     displayInfo: function () {
         'use strict';
@@ -70,5 +75,10 @@ Invaders.MainMenu.prototype = {
     displayMenu: function () {
         'use strict';
         this.startButton = new TextButton(this.game, Config.MAP_WIDTH / 2, Config.MAP_HEIGHT * 6 / 7 + 20, 'Start game', this.startGame, this);
+    },
+    displayForkMe: function () {
+        'use strict';
+        this.forkMeButton = this.add.button(Config.MAP_WIDTH, 0, 'forkme', this.goToGitHub, this, 0, 0, 0);
+        this.forkMeButton.anchor.setTo(1, 0);
     }
 };
