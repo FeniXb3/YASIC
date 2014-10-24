@@ -18,7 +18,7 @@ var EnemyGroup = function (game, maxInRow, enemyData) {
     Phaser.Group.call(this, game, undefined, 'enemies', false, true, Phaser.Physics.ARCADE);
     
     this.velocity = Config.ENEMY_SPEED;
-    this.rockets = this.game.add.group(undefined, 'rockets', false, true, Phaser.Physics.ARCADE);
+    this.projectiles = this.game.add.group(undefined, 'projectiles', false, true, Phaser.Physics.ARCADE);
     this.fireInterval = 1500;
     this.nextRocketTime = this.game.time.now + this.fireInterval;
     this.reviving = false;
@@ -73,19 +73,14 @@ EnemyGroup.prototype.onMoveDownCompleted = function (event) {
 
 EnemyGroup.prototype.fireRocket = function () {
     'use strict';
-    var index,
-        rockets;
+    var index;
+    
     if (this.game.time.now >= this.nextRocketTime) {
         index = Math.floor(Math.random() * this.length);
         while (!this.children[index].alive) {
             index = Math.floor(Math.random() * this.length);
         }
-
-        rockets = this.children[index].fire(true);
-        
-        for (index = 0; index < rockets.length; index++) {
-            this.rockets.add(rockets[index]);
-        }
+        this.children[index].fire(this.projectiles);
 
         this.nextRocketTime = this.game.time.now + this.fireInterval;
     }

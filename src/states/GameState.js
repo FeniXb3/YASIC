@@ -75,13 +75,13 @@ Invaders.Game.prototype = {
         'use strict';
         this.game.physics.arcade.collide(this.enemies, this.walls, this.collideWalls, null, this);
         this.game.physics.arcade.collide(this.finish, this.enemies, this.reachFinish, null, this);
-        this.game.physics.arcade.overlap(this.enemies, this.hero.bullets, this.hitEnemy, null, this);
-        this.game.physics.arcade.overlap(this.hero, this.enemies.rockets, this.hitHero, null, this);
+        this.game.physics.arcade.overlap(this.enemies, this.hero.projectiles, this.hitEnemy, null, this);
+        this.game.physics.arcade.overlap(this.hero, this.enemies.projectiles, this.hitHero, null, this);
         this.game.physics.arcade.overlap(this.hero, this.enemies, this.hitHero, null, this);
         this.game.physics.arcade.overlap(this.enemies, this.barriers, this.collideBarrier, null, this);
-        this.game.physics.arcade.overlap(this.enemies.rockets, this.barriers, this.hitBarrier, null, this);
-        this.game.physics.arcade.overlap(this.hero.bullets, this.barriers, this.hitBarrier, null, this);
-        this.game.physics.arcade.overlap(this.specialEnemy, this.hero.bullets,  this.hitEnemy, null, this);
+        this.game.physics.arcade.overlap(this.enemies.projectiles, this.barriers, this.hitBarrier, null, this);
+        this.game.physics.arcade.overlap(this.hero.projectiles, this.barriers, this.hitBarrier, null, this);
+        this.game.physics.arcade.overlap(this.specialEnemy, this.hero.projectiles,  this.hitEnemy, null, this);
     },
     setupControls: function () {
         'use strict';

@@ -151,44 +151,44 @@ Spacecraft.prototype.setupGuns = function (guns) {
     }
     
     this.shooting = false;
-    this.bullets = this.game.add.group();
+    this.projectiles = this.game.add.group();
 };
 
-Spacecraft.prototype.fire = function (passBullets) {
+Spacecraft.prototype.fire = function (projectiles) {
     'use strict';
     var that = this,
-        bullets = [],
         bullet,
         index;
+    projectiles = projectiles || this.projectiles;
     
     if (this.alive && !this.blocked) {
         this.shooting = true;
         this.gunfires.forEach(function (gun) {
-            bullet = that.game.add.sprite(that.x + gun.x, that.y + gun.y, gun.ammo.type);
-            that.game.physics.enable(bullet, Phaser.Physics.ARCADE);
-            bullet.anchor.setTo(0.5, 1);
-            bullet.angle = gun.angle;
-            bullet.body.velocity.y = gun.ammo.velocity.y;
-            bullet.body.velocity.x = gun.ammo.velocity.x;
-            bullet.outOfBoundsKill = true;
-            bullet.checkWorldBounds = true;
-
-            bullets.push(bullet);
+            if (projectiles.countDead() > 0) {
+                bullet = projectiles.getFirstDead();
+                bullet.x = that.x + gun.x;
+                bullet.y = that.y + gun.y;
+                bullet.revive();
+            } else {
+                bullet = that.game.add.sprite(that.x + gun.x, that.y + gun.y, gun.ammo.type);
+                that.game.physics.enable(bullet, Phaser.Physics.ARCADE);
+                bullet.anchor.setTo(0.5, 1);
+                bullet.angle = gun.angle;
+                bullet.body.velocity.y = gun.ammo.velocity.y;
+                bullet.body.velocity.x = gun.ammo.velocity.x;
+                bullet.outOfBoundsKill = true;
+                bullet.checkWorldBounds = true;
+                
+                projectiles.add(bullet);
+            }
             if (gun.sound !== undefined) {
                 gun.sound.play();
             }
         });
-
         this.gunfires.setAll('visible', true);
 
         setTimeout(function () {
             that.gunfires.setAll('visible', false);
         }, 100);
     }
-    
-    for (index = 0; index < bullets.length; index++) {
-        this.bullets.add(bullets[index]);
-    }
-    
-    return bullets;
 };

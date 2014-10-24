@@ -172,7 +172,7 @@ describe('Enemies', function () {
     
     describe('when shooting', function () {
         beforeEach(function (done) {
-            rocketsCount = gameState.enemies.rockets.length;
+            rocketsCount = gameState.enemies.projectiles.length;
             heroHealth = hero.health;
             setTimeout(function () {
                 done();
@@ -180,12 +180,12 @@ describe('Enemies', function () {
         });
     
         it('should shoot from random enemy', function () {
-            expect(gameState.enemies.rockets.length).toBeGreaterThan(rocketsCount);
+            expect(gameState.enemies.projectiles.length).toBeGreaterThan(rocketsCount);
         });
 
         it('should hit hero with rocket', function (done) {
             gameState.barriers.callAll('kill');
-            hero.x = gameState.enemies.rockets.getFirstAlive().x;
+            hero.x = gameState.enemies.projectiles.getFirstAlive().x;
             setTimeout(function () {
                 expect(hero.health).toBeLessThan(heroHealth);
                 done();
