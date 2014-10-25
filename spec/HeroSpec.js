@@ -38,7 +38,7 @@ describe('Hero', function () {
         });
         
         
-        game =  new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'GanymedeInvaders');
+        game =  new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'YASIC');
         game.state.add('Boot', Invaders.Boot);
         game.state.add('Preloader', Invaders.Preloader);
         game.state.add('MainMenu', Invaders.MainMenu);
@@ -59,7 +59,7 @@ describe('Hero', function () {
     it('should be displayed at the bottom', function () {
         expect(hero).toBeVisible();
 
-        expect(hero).toBeAt({ x: Config.MAP_WIDTH / 2, y: Config.MAP_HEIGHT - 120});
+        expect(hero).toBeAt({ x: Config.MAP_WIDTH / 2, y: Config.MAP_HEIGHT - 60});
     });
 
     it('should loop engine sound', function () {

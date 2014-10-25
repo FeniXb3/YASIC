@@ -73,15 +73,22 @@ Invaders.Game.prototype = {
     },
     checkCollisions: function () {
         'use strict';
+        // walls and finish
         this.game.physics.arcade.collide(this.enemies, this.walls, this.collideWalls, null, this);
         this.game.physics.arcade.collide(this.finish, this.enemies, this.reachFinish, null, this);
+        
+        // hero's projectiles
         this.game.physics.arcade.overlap(this.enemies, this.hero.projectiles, this.hitEnemy, null, this);
+        this.game.physics.arcade.overlap(this.barriers, this.hero.projectiles, this.hitBarrier, null, this);
+        this.game.physics.arcade.overlap(this.hero.projectiles, this.specialEnemy, this.hitEnemy, null, this);
+        
+        // enemies' projectiles
         this.game.physics.arcade.overlap(this.hero, this.enemies.projectiles, this.hitHero, null, this);
-        this.game.physics.arcade.overlap(this.hero, this.enemies, this.hitHero, null, this);
-        this.game.physics.arcade.overlap(this.enemies, this.barriers, this.collideBarrier, null, this);
-        this.game.physics.arcade.overlap(this.enemies.projectiles, this.barriers, this.hitBarrier, null, this);
-        this.game.physics.arcade.overlap(this.hero.projectiles, this.barriers, this.hitBarrier, null, this);
-        this.game.physics.arcade.overlap(this.specialEnemy, this.hero.projectiles,  this.hitEnemy, null, this);
+        this.game.physics.arcade.overlap(this.barriers, this.enemies.projectiles, this.hitBarrier, null, this);
+        
+        // enemies
+        this.game.physics.arcade.overlap(this.enemies, this.hero, this.hitHero, null, this);
+        this.game.physics.arcade.overlap(this.enemies, this.barriers, this.hitBarrier, null, this);
     },
     setupControls: function () {
         'use strict';
@@ -191,30 +198,24 @@ Invaders.Game.prototype = {
         'use strict';
         this.isTheEnd();
     },
-    hitEnemy: function (enemy, bullet) {
+    hitEnemy: function (ship, projectile) {
         'use strict';
-        this.points += enemy.reward;
-
-        enemy.hit();
-        bullet.kill();
+        this.points += ship.reward;
+        ship.hit();
+        projectile.hit();
     },
-    hitHero: function (hero, rocket) {
+    hitHero: function (ship, projectile) {
         'use strict';
-        hero.hit();
-        rocket.destroy();
+        ship.hit();
+        projectile.hit();
+        
         this.shake.shake(5);
     },
-    hitBarrier: function (item, barrier) {
+    hitBarrier: function (ship, projectile) {
         'use strict';
-        barrier.hit();
-        item.kill();
-        
-        this.shake.shake(3);
-    },
-    collideBarrier: function (ship, barrier) {
-        'use strict';
-        barrier.hit();
         ship.hit();
+        projectile.hit();
+                
         this.shake.shake(3);
     },
     updatePointsLabel: function () {

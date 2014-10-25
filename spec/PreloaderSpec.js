@@ -18,7 +18,7 @@ describe('Preloader ', function () {
             done();
         });
         
-        game =  new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'GanymedeInvaders');
+        game =  new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'YASIC');
         game.state.add('Boot', Invaders.Boot);
         game.state.add('Preloader', Invaders.Preloader);
         game.state.add('MainMenu', Invaders.MainMenu);

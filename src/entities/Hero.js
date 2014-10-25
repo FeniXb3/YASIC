@@ -18,7 +18,7 @@ var Hero = function (game, heroData, x, y) {
     Spacecraft.call(this, game, x, y, 'hero', engines, guns);
     this.body.collideWorldBounds = true;
     this.fireInterval = 1000;
-    this.nextShotTime = this.game.time.now + this.fireInterval;
+    this.nextAutoShotTime = this.game.time.now + this.fireInterval;
     
 
     Object.defineProperty(this, "health", {
@@ -56,10 +56,15 @@ Hero.prototype.constructor = Hero;
 Hero.prototype.update = function () {
     'use strict';
     
-    if (this.shooting && this.game.time.now >= this.nextShotTime) {
+    if (this.shooting && this.game.time.now >= this.nextAutoShotTime) {
         this.fire();
-        this.nextShotTime = this.game.time.now + this.fireInterval;
     }
+};
+
+Hero.prototype.fire = function () {
+    'use strict';
+    Spacecraft.prototype.fire.call(this);
+    this.nextAutoShotTime = this.game.time.now + this.fireInterval;
 };
 
 Hero.prototype.moveLeft = function () {

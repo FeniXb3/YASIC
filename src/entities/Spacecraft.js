@@ -1,6 +1,7 @@
 /*global Phaser */
 /*global Config */
 /*global Gun */
+/*global Projectile */
 /*jslint plusplus: true */
 
 var Spacecraft = function (game, x, y, image, engines, guns) {
@@ -159,27 +160,23 @@ Spacecraft.prototype.fire = function (projectiles) {
     'use strict';
     var that = this,
         bullet,
-        index;
+        index,
+        x,
+        y;
     projectiles = projectiles || this.projectiles;
     
     if (this.alive && !this.blocked) {
         this.shooting = true;
         this.gunfires.forEach(function (gun) {
+            x = that.x + gun.x;
+            y = that.y + gun.y;
             if (projectiles.countDead() > 0) {
                 bullet = projectiles.getFirstDead();
-                bullet.x = that.x + gun.x;
-                bullet.y = that.y + gun.y;
+                bullet.x = x;
+                bullet.y = y;
                 bullet.revive();
             } else {
-                bullet = that.game.add.sprite(that.x + gun.x, that.y + gun.y, gun.ammo.type);
-                that.game.physics.enable(bullet, Phaser.Physics.ARCADE);
-                bullet.anchor.setTo(0.5, 1);
-                bullet.angle = gun.angle;
-                bullet.body.velocity.y = gun.ammo.velocity.y;
-                bullet.body.velocity.x = gun.ammo.velocity.x;
-                bullet.outOfBoundsKill = true;
-                bullet.checkWorldBounds = true;
-                
+                bullet = new Projectile(that.game, x, y, gun.ammo.type, gun.angle, gun.ammo.velocity);
                 projectiles.add(bullet);
             }
             if (gun.sound !== undefined) {

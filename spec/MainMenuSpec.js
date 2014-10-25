@@ -13,8 +13,7 @@ describe('MainMenu ', function () {
     'use strict';
     var game,
         mainMenuState,
-        mainMenuStateCreateMethod,
-        buttonTint;
+        mainMenuStateCreateMethod;
 
     beforeEach(function (done) {
         mainMenuStateCreateMethod = Invaders.MainMenu.prototype.create;
@@ -26,7 +25,7 @@ describe('MainMenu ', function () {
             }, 1000);
         });
         
-        game =  new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'GanymedeInvaders');
+        game =  new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'YASIC');
         game.state.add('Boot', Invaders.Boot);
         game.state.add('Preloader', Invaders.Preloader);
         game.state.add('MainMenu', Invaders.MainMenu);
@@ -54,17 +53,6 @@ describe('MainMenu ', function () {
         it('should be displayed with "Start game" text', function () {
             expect(mainMenuState.startButton instanceof TextButton).toBeTruthy();
             expect(mainMenuState.startButton.label.text).toEqual('Start game');
-        });
-
-        describe('when hovered', function () {
-            beforeEach(function () {
-                buttonTint = mainMenuState.startButton.label.tint;
-                mainMenuState.startButton.events.onInputOver.dispatch();
-            });
-
-            it('should change text color', function () {
-                expect(mainMenuState.startButton.label.tint).not.toEqual(buttonTint);
-            });
         });
 
         describe('when clicked', function () {
