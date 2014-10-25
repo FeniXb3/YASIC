@@ -15,7 +15,8 @@ var Spacecraft = function (game, x, y, image, engines, guns) {
 
     this.anchor.setTo(0.5, 0.5);
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
-    
+    this.scale.setTo(0.8, 0.8);
+
     this.start = {
         x: x,
         y: y

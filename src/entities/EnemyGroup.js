@@ -27,7 +27,7 @@ var EnemyGroup = function (game, maxInRow, enemyData) {
     for (row = 0; row < maxRows; row++) {
         for (column = 0; column < maxInRow; column++) {
             x = column * 110 + 80;
-            y = (maxRows - 1 - row) * 140 + 120;
+            y = (maxRows - 1 - row) * 100 + 120;
             
             this.add(new Enemy(this.game, x, y, enemyData[row].name, enemyData[row].reward, this.velocity, enemyData[row].engines, enemyData[row].guns));
         }

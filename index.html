@@ -24,11 +24,15 @@
         <script src="src/entities/EnemyGroup.js"></script>
         <script src="src/entities/Barrier.js"></script>
         <script src="src/entities/SpecialEnemy.js"></script>
+        
+        <style>
+            canvas { margin: 0 auto; }
+        </style>
     </head>
     <body>
         <script>
             (function(){
-                var game = new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'GanymedeInvaders');
+                var game = new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'YASIC');
                 game.state.add('Boot', Invaders.Boot);
                 game.state.add('Preloader', Invaders.Preloader);
                 game.state.add('MainMenu', Invaders.MainMenu);

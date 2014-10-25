@@ -2,7 +2,7 @@
 
 var Config = {
     MAP_WIDTH: 1024,
-    MAP_HEIGHT: 896,
+    MAP_HEIGHT: 768,
     HERO_SPEED: 300,
     ENEMY_SPEED: 70,
     SPECIAL_SPEED: 300,

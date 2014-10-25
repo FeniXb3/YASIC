@@ -9,7 +9,7 @@ var Hero = function (game, heroData, x, y) {
         engines,
         guns;
     x = x || Config.MAP_WIDTH / 2;
-    y = y || Config.MAP_HEIGHT - 120;
+    y = y || Config.MAP_HEIGHT - 60;
     
     
     engines = heroData.engines;
