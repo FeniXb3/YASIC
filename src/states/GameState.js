@@ -63,6 +63,7 @@ Invaders.Game.prototype = {
         var that = this;
         if (!this.shaken) {
             this.hero.blocked = true;
+            clearTimeout(this.specialEnemy.reviveTimeout);
             this.shaken = true;
             this.shake.shake(40);
 

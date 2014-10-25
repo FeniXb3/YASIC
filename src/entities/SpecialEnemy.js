@@ -34,7 +34,7 @@ SpecialEnemy.prototype.update = function () {
         this.body.velocity.x = this.possibleStartPoints[index].velocity;
         this.reward = Math.floor(Math.random() * 10 + 1) * 100;
         
-        setTimeout(function () {
+        this.reviveTimeout = setTimeout(function () {
             that.revive();
             that.reviving = false;
         }, 5000);
