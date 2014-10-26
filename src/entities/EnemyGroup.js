@@ -19,7 +19,7 @@ var EnemyGroup = function (game, maxInRow, enemyData) {
     
     this.velocity = Config.ENEMY_SPEED;
     this.projectiles = this.game.add.group(undefined, 'projectiles', false, true, Phaser.Physics.ARCADE);
-    this.fireInterval = 1500;
+    this.fireInterval = 1000;
     this.nextRocketTime = this.game.time.now + this.fireInterval;
     this.reviving = false;
     this.revivingTimeout = 1000;
