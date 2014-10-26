@@ -9,12 +9,17 @@
 /*global afterEach */
 /*global TextButton */
 /*global setupGame */
+/*jslint plusplus: true */
 
 describe('MainMenu ', function () {
     'use strict';
     var game,
         mainMenuState,
-        mainMenuStateCreateMethod;
+        mainMenuStateCreateMethod,
+        hero,
+        enemy,
+        i,
+        j;
 
     beforeEach(function (done) {
         mainMenuStateCreateMethod = Invaders.MainMenu.prototype.create;
@@ -29,14 +34,32 @@ describe('MainMenu ', function () {
         game = setupGame();
     });
     
+    
     afterEach(function (done) {
-        if (game.state.states.Game.hero !== undefined) {
-            game.state.states.Game.hero.engineSound.stop();
+        hero = game.state.states.Game.hero;
+        if (hero !== undefined) {
+            hero.engineSound.stop();
+            for (j = 0; j < hero.gunfires.length; j++) {
+                hero.gunfires.children[j].sound.stop();
+            }
         }
+        if (game.state.states.Game.enemies !== undefined) {
+            
+            for (i = 0; i < game.state.states.Game.enemies.length; i++) {
+                enemy = game.state.states.Game.enemies.children[i];
+                enemy.explosionSound.stop();
+                for (j = 0; j < enemy.gunfires.length; j++) {
+                    enemy.gunfires.children[j].sound.stop();
+                }
+            }
+        }
+        
         setTimeout(function () {
             game.destroy();
-            done();
-        }, 500);
+            setTimeout(function () {
+                done();
+            }, 500);
+        }, 1500);
     });
     
     it('should display background on the whole screen', function () {

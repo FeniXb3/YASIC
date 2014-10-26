@@ -31,6 +31,8 @@ describe('Enemies', function () {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
 
     beforeEach(function (done) {
+        // disable sounds for those specs
+        Cookies.set('muteSFX', 'true');
         mainMenuStateCreateMethod = Invaders.MainMenu.prototype.create;
         spyOn(Invaders.MainMenu.prototype, 'create').and.callFake(function () {
             mainMenuStateCreateMethod.call(game.state.states.MainMenu);
@@ -50,10 +52,13 @@ describe('Enemies', function () {
         if (game.state.states.Game.hero !== undefined) {
             game.state.states.Game.hero.engineSound.stop();
         }
+        
         setTimeout(function () {
             game.destroy();
-            done();
-        }, 10);
+            setTimeout(function () {
+                done();
+            }, 500);
+        }, 500);
     });
     
     it('should be visible in quantity of 32', function () {

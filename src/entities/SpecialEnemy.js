@@ -37,7 +37,9 @@ SpecialEnemy.prototype.update = function () {
         this.reward = Math.floor(Math.random() * 10 + 1) * 100;
         
         this.reviveTimeout = setTimeout(function () {
-            that.revive();
+            if (that.game !== undefined && that.game !== null) {
+                that.revive();
+            }
             that.reviving = false;
         }, 5000);
     }

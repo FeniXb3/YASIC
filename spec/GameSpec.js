@@ -24,6 +24,8 @@ describe('Game', function () {
         volume;
 
     beforeEach(function (done) {
+        // disable sounds for those specs
+        //Cookies.set('muteSFX', 'true');
         mainMenuStateCreateMethod = Invaders.MainMenu.prototype.create;
         spyOn(Invaders.MainMenu.prototype, 'create').and.callFake(function () {
             mainMenuStateCreateMethod.call(game.state.states.MainMenu);
@@ -44,8 +46,10 @@ describe('Game', function () {
         }
         setTimeout(function () {
             game.destroy();
-            done();
-        }, 10);
+            setTimeout(function () {
+                done();
+            }, 500);
+        }, 500);
     });
     
     it('should be started', function () {

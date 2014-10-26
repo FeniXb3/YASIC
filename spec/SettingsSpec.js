@@ -15,20 +15,26 @@ describe('Settings ', function () {
     'use strict';
     var game,
         settingsState,
-        mainMenuStateCreateMethod;
+        mainMenuStateCreateMethod,
+        goingBack;
 
     beforeEach(function (done) {
         Cookies.expire('muteSFX');
+        goingBack = false;
         mainMenuStateCreateMethod = Invaders.MainMenu.prototype.create;
         spyOn(Invaders.MainMenu.prototype, 'create').and.callFake(function () {
             mainMenuStateCreateMethod.call(game.state.states.MainMenu);
             setTimeout(function () {
-                game.state.states.MainMenu.settingsButton.events.onInputUp.dispatch();
-                setTimeout(function () {
-                    settingsState = game.state.states.Settings;
+                if (!goingBack) {
+                    game.state.states.MainMenu.settingsButton.events.onInputUp.dispatch();
+                    setTimeout(function () {
+                        settingsState = game.state.states.Settings;
+                        done();
+                    }, 100);
+                } else {
                     done();
-                }, 500);
-            }, 1000);
+                }
+            }, 100);
         });
         
         game = setupGame();
@@ -42,10 +48,13 @@ describe('Settings ', function () {
             game.state.states.Game.hero.engineSound.stop();
         }
         Cookies.expire('muteSFX');
+        
         setTimeout(function () {
             game.destroy();
-            done();
-        }, 500);
+            setTimeout(function () {
+                done();
+            }, 100);
+        }, 10);
     });
     
     describe('Sound effects option', function () {
@@ -67,7 +76,7 @@ describe('Settings ', function () {
                         
             describe('when the game has been started', function () {
                 beforeEach(function (done) {
-                    
+                    goingBack = true;
                     settingsState.backButton.events.onInputUp.dispatch();
                     setTimeout(function () {
                         game.state.states.MainMenu.startButton.events.onInputUp.dispatch();
@@ -104,6 +113,7 @@ describe('Settings ', function () {
 
         describe('when clicked', function () {
             beforeEach(function (done) {
+                goingBack = true;
                 settingsState.backButton.events.onInputUp.dispatch();
                 setTimeout(function () {
                     done();

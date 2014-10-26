@@ -14,6 +14,7 @@ describe('Boot', function () {
     var game;
     
     beforeEach(function (done) {
+        spyOn(Invaders.Preloader.prototype, 'preload');
         spyOn(Invaders.Preloader.prototype, 'create').and.callFake(function () {
             setTimeout(function () {
                 done();
@@ -30,10 +31,6 @@ describe('Boot', function () {
     
     it('should load Batman Forever font', function () {
         expect(game.cache.checkBitmapFontKey('batmanForever')).toBeTruthy();
-    });
-    
-    it('should load background', function () {
-        expect(game.cache.checkImageKey('bg')).toBeTruthy();
     });
     
     it('should start Preloader state', function () {
