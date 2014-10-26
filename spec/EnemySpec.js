@@ -14,6 +14,7 @@
 /*global translateByAnchor */
 /*jslint plusplus: true */
 /*global jasmine */
+/*global setupGame */
 
 describe('Enemies', function () {
     'use strict';
@@ -41,12 +42,8 @@ describe('Enemies', function () {
             }, 100);
         });
         
-        game =  new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'YASIC');
-        game.state.add('Boot', Invaders.Boot);
-        game.state.add('Preloader', Invaders.Preloader);
-        game.state.add('MainMenu', Invaders.MainMenu);
-        game.state.add('Game', Invaders.Game);
-        game.state.start('Boot');
+        
+        game = setupGame();
     });
     
     afterEach(function (done) {
@@ -62,17 +59,7 @@ describe('Enemies', function () {
     it('should be visible in quantity of 32', function () {
         expect(gameState.enemies.children.length).toEqual(32);
     });
-    
-    xit('should be displayed in 4 rows', function () {
-        var rows;
-        expect(rows).toEqual(4);
-    });
-    
-    xit('should be 5 in each row', function () {
-        var enemiesInRows;
-        expect(enemiesInRows).toEqual(5);
-    });
-    
+        
     it('should move towards the right side', function () {
         var i,
             allHaveCorrectVelocity = true,

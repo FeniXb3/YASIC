@@ -1,7 +1,25 @@
 /*global beforeEach */
 /*global jasmine */
 /*global console */
+/*global Phaser */
+/*global Config */
+/*global Invaders */
 /*jslint plusplus: true */
+/*global setupGame */
+
+function setupGame() {
+    'use strict';
+    var game =  new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'YASIC');
+    game.state.add('Boot', Invaders.Boot);
+    game.state.add('Preloader', Invaders.Preloader);
+    game.state.add('MainMenu', Invaders.MainMenu);
+    game.state.add('Settings', Invaders.Settings);
+    game.state.add('Game', Invaders.Game);
+    game.state.start('Boot');
+    
+    return game;
+}
+
 
 beforeEach(function () {
     'use strict';

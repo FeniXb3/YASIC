@@ -1,5 +1,6 @@
 /*global Phaser */
 /*global Config */
+/*global Sound */
 /*jslint plusplus: true */
 
 var Gun = function (game, gunInfo) {
@@ -21,7 +22,7 @@ var Gun = function (game, gunInfo) {
         velocity: gunInfo.ammo.velocity
     };
     
-    this.sound = this.game.add.audio(this.ammo.type);
+    this.sound = new Sound(this.game, this.ammo.type, 'SFX', 0.1);
 };
 Gun.prototype = Object.create(Phaser.Sprite.prototype);
 Gun.prototype.constructor = Gun;

@@ -2,6 +2,7 @@
 /*global Config */
 /*global Gun */
 /*global Projectile */
+/*global Sound */
 /*jslint plusplus: true */
 
 var Spacecraft = function (game, x, y, image, engines, guns) {
@@ -76,7 +77,7 @@ Spacecraft.prototype.setupExplosion = function () {
     this.explosion = this.game.add.sprite(this.x, this.y, 'explosion');
     this.explosion.anchor.setTo(0.5, 0.5);
     this.explosion.visible = false;
-    this.explosionSound = this.game.add.audio('explosion');
+    this.explosionSound = new Sound(this.game, 'explosion', 'SFX', 0.5);
 };
 
 Spacecraft.prototype.resetExplosion = function () {

@@ -12,6 +12,7 @@
 /*global xdescribe*/
 /*global invokeKeydown */
 /*global translateByAnchor */
+/*global setupGame */
 
 describe('Hero', function () {
     'use strict';
@@ -37,13 +38,7 @@ describe('Hero', function () {
             }, 500);
         });
         
-        
-        game =  new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'YASIC');
-        game.state.add('Boot', Invaders.Boot);
-        game.state.add('Preloader', Invaders.Preloader);
-        game.state.add('MainMenu', Invaders.MainMenu);
-        game.state.add('Game', Invaders.Game);
-        game.state.start('Boot');
+        game = setupGame();
     });
     
     afterEach(function (done) {

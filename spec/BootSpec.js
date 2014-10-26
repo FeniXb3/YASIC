@@ -7,6 +7,7 @@
 /*global Config */
 /*global Invaders */
 /*global spyOn */
+/*global setupGame */
 
 describe('Boot', function () {
     'use strict';
@@ -19,11 +20,7 @@ describe('Boot', function () {
             }, 100);
         });
         
-        game =  new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'YASIC');
-        game.state.add('Boot', Invaders.Boot);
-        game.state.add('Preloader', Invaders.Preloader);
-        game.state.start('Boot');
-        
+        game = setupGame();
     });
     
     afterEach(function () {

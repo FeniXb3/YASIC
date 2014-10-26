@@ -19,6 +19,10 @@ Invaders.MainMenu.prototype = {
         'use strict';
         this.game.state.start('Game');
     },
+    openSettings: function () {
+        'use strict';
+        this.game.state.start('Settings');
+    },
     goToGitHub: function () {
         'use strict';
         window.open('https://github.com/FeniXb3/YASIC', '_blank');
@@ -69,7 +73,12 @@ Invaders.MainMenu.prototype = {
     },
     displayMenu: function () {
         'use strict';
-        this.startButton = new TextButton(this.game, Config.MAP_WIDTH / 2, Config.MAP_HEIGHT * 6 / 7 + 20, 'Start game', this.startGame, this);
+        var x = Config.MAP_WIDTH / 2,
+            y = Config.MAP_HEIGHT * 6 / 7 + 20,
+            distance = 30;
+        this.startButton = new TextButton(this.game, x, y, 'Start game', this.startGame, this);
+        y += distance;
+        this.settingsButton = new TextButton(this.game, x, y, 'Settings', this.openSettings, this);
     },
     displayForkMe: function () {
         'use strict';

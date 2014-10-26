@@ -1,6 +1,7 @@
 /*global Phaser */
 /*global Config */
 /*global Spacecraft */
+/*global Sound */
 /*jslint plusplus: true */
 
 var Hero = function (game, heroData, x, y) {
@@ -102,7 +103,8 @@ Hero.prototype.stopFire = function () {
 
 Hero.prototype.setupEngineSound = function () {
     'use strict';
-    this.engineSound = this.game.add.audio('engine', 0.5, true);
+    
+    this.engineSound = new Sound(this.game, 'engine', 'SFX', 0.5, true);
     this.engineSound.play();
 };
 

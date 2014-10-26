@@ -8,6 +8,7 @@
 /*global spyOn */
 /*global afterEach */
 /*global TextButton */
+/*global setupGame */
 
 describe('MainMenu ', function () {
     'use strict';
@@ -25,12 +26,7 @@ describe('MainMenu ', function () {
             }, 1000);
         });
         
-        game =  new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'YASIC');
-        game.state.add('Boot', Invaders.Boot);
-        game.state.add('Preloader', Invaders.Preloader);
-        game.state.add('MainMenu', Invaders.MainMenu);
-        game.state.add('Game', Invaders.Game);
-        game.state.start('Boot');
+        game = setupGame();
     });
     
     afterEach(function (done) {
@@ -65,6 +61,27 @@ describe('MainMenu ', function () {
 
             it('should start game', function () {
                 expect(game.state.current).toEqual('Game');
+            });
+        });
+    });
+    
+        
+    describe('Options button', function () {
+        it('should be displayed with "Settings" text', function () {
+            expect(mainMenuState.settingsButton instanceof TextButton).toBeTruthy();
+            expect(mainMenuState.settingsButton.label.text).toEqual('Settings');
+        });
+
+        describe('when clicked', function () {
+            beforeEach(function (done) {
+                mainMenuState.settingsButton.events.onInputUp.dispatch();
+                setTimeout(function () {
+                    done();
+                }, 1000);
+            });
+
+            it('should open settings', function () {
+                expect(game.state.current).toEqual('Settings');
             });
         });
     });

@@ -8,6 +8,7 @@
 /*global Invaders */
 /*global spyOn */
 /*global afterEach */
+/*global setupGame */
 
 describe('Preloader ', function () {
     'use strict';
@@ -18,11 +19,7 @@ describe('Preloader ', function () {
             done();
         });
         
-        game =  new Phaser.Game(Config.MAP_WIDTH, Config.MAP_HEIGHT, Phaser.CANVAS, 'YASIC');
-        game.state.add('Boot', Invaders.Boot);
-        game.state.add('Preloader', Invaders.Preloader);
-        game.state.add('MainMenu', Invaders.MainMenu);
-        game.state.start('Boot');
+        game = setupGame();
     });
     
     afterEach(function (done) {
