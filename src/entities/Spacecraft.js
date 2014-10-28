@@ -65,6 +65,15 @@ Object.defineProperty(Spacecraft.prototype, "velocity", {
     }
 });
 
+Spacecraft.prototype.destroy = function () {
+    'use strict';
+    if (this.explosionSound !== undefined) {
+        this.explosionSound.destroy();
+    }
+    
+    Phaser.Sprite.prototype.destroy.call(this);
+};
+
 Spacecraft.prototype.hit = function () {
     'use strict';
     this.damage(1);

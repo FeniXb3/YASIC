@@ -13,7 +13,7 @@ Invaders.Game.prototype = Object.create(Invaders.Base.prototype);
 Invaders.Game.prototype.create = function () {
     'use strict';
     var points = 0;
-    
+
     Invaders.Base.prototype.create.call(this, { displayTitle: false, displayForkMe: false });
 
     Object.defineProperty(this, "points", {

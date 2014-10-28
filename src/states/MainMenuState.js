@@ -10,12 +10,9 @@ Invaders.MainMenu.prototype = Object.create(Invaders.Base.prototype);
 Invaders.MainMenu.prototype.create = function () {
     'use strict';
     Invaders.Base.prototype.create.call(this);
-  //  this.background = this.add.tileSprite(0, 0, Config.MAP_WIDTH, Config.MAP_HEIGHT, 'bg');
 
-  //  this.displayTitle();
     this.displayInfo();
     this.displayMenu();
-    //this.displayForkMe();
 };
 
 Invaders.MainMenu.prototype.startGame = function () {

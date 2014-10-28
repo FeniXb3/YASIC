@@ -26,3 +26,13 @@ var Gun = function (game, gunInfo) {
 };
 Gun.prototype = Object.create(Phaser.Sprite.prototype);
 Gun.prototype.constructor = Gun;
+
+Gun.prototype.destroy = function () {
+    'use strict';
+    if (this.sound !== undefined) {
+        this.sound.destroy();
+        console.log(this.ammo.type);
+    }
+    
+    Phaser.Sprite.prototype.destroy.call(this);
+};
