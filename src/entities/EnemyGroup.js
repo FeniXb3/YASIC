@@ -23,6 +23,7 @@ var EnemyGroup = function (game, maxInRow, enemyData) {
     this.nextRocketTime = this.game.time.now + this.fireInterval;
     this.reviving = false;
     this.revivingTimeout = 1000;
+    this.allowWallCollision = true;
     
     for (row = 0; row < maxRows; row++) {
         for (column = 0; column < maxInRow; column++) {
@@ -68,6 +69,7 @@ EnemyGroup.prototype.onMoveDownCompleted = function (event) {
     }
     
     this.setAll('velocity', this.velocity);
+    this.allowWallCollision = true;
 };
 
 

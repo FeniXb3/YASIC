@@ -209,11 +209,15 @@ Invaders.Game.prototype.handleFireKeyUp = function (key) {
 
 Invaders.Game.prototype.collideWalls = function (enemy, wall) {
     'use strict';
-    enemy.parent.setAll('body.velocity', { x: 0, y: 0 });
-    this.enemyTween = this.game.add.tween(this.enemies.children[0].body.velocity);
-    this.enemyTween.from({ y: 100 }, 0, Phaser.Easing.Linear.None);
-    this.enemyTween.onComplete.add(this.enemies.onMoveDownCompleted, this.enemies);
-    this.enemyTween.start();
+    
+    if (enemy.parent.allowWallCollision === true) {
+        enemy.parent.allowWallCollision = false;
+        enemy.parent.setAll('body.velocity', { x: 0, y: 0 });
+        this.enemyTween = this.game.add.tween(this.enemies.children[0].body.velocity);
+        this.enemyTween.from({ y: 100 }, 0, Phaser.Easing.Linear.None);
+        this.enemyTween.onComplete.add(this.enemies.onMoveDownCompleted, this.enemies);
+        this.enemyTween.start();
+    }
 };
 
 Invaders.Game.prototype.reachFinish = function (finish, enemy) {
