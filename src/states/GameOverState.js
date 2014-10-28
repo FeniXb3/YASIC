@@ -21,8 +21,15 @@ Invaders.GameOver.prototype.create = function () {
 
 Invaders.GameOver.prototype.displayMenu = function () {
     'use strict';
-    this.startButton = new TextButton(this.game, Config.MAP_WIDTH / 2, Config.MAP_HEIGHT * 5 / 7, 'Restart game', this.startGame, this);
-    this.twitterButton = new TextButton(this.game, Config.MAP_WIDTH / 2, Config.MAP_HEIGHT * 6 / 7 + 40, 'twitter: @fenixb3', this.goToTwitter, this);
+    var x = Config.MAP_WIDTH / 2,
+        y = Config.MAP_HEIGHT * 5 / 7,
+        distance = 30;
+    
+    this.startButton = new TextButton(this.game, x, y, 'Restart game', this.startGame, this);
+    y += distance;
+    this.mainmenuButton = new TextButton(this.game, x, y, 'Main menu', this.openMainMenu, this);
+    y += distance * 2;
+    this.twitterButton = new TextButton(this.game, x, y, 'twitter: @fenixb3', this.goToTwitter, this);
 };
 
 Invaders.GameOver.prototype.displayGameOver = function () {
@@ -59,6 +66,11 @@ Invaders.GameOver.prototype.updateLabels = function () {
 Invaders.GameOver.prototype.startGame = function () {
     'use strict';
     this.game.state.start('Game');
+};
+
+Invaders.GameOver.prototype.openMainMenu = function () {
+    'use strict';
+    this.game.state.start('MainMenu');
 };
 
 Invaders.GameOver.prototype.goToTwitter = function () {
