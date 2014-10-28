@@ -31,7 +31,6 @@ Gun.prototype.destroy = function () {
     'use strict';
     if (this.sound !== undefined) {
         this.sound.destroy();
-        console.log(this.ammo.type);
     }
     
     Phaser.Sprite.prototype.destroy.call(this);

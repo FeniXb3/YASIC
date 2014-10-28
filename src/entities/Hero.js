@@ -62,6 +62,15 @@ Hero.prototype.update = function () {
     }
 };
 
+Hero.prototype.destroy = function () {
+    'use strict';
+    if (this.engineSound !== undefined) {
+        this.engineSound.destroy();
+    }
+    
+    Spacecraft.prototype.destroy.call(this);
+};
+
 Hero.prototype.fire = function () {
     'use strict';
     Spacecraft.prototype.fire.call(this);
