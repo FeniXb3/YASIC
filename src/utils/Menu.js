@@ -1,20 +1,21 @@
 /*jslint plusplus: true */
 /*global TextButton */
 
-var Menu = function (game, x, y, distance, menuData) {
+var Menu = function (game, x, y, distance, menuData, font, size) {
     'use strict';
     var i,
         button,
         jsonItem;
+    
+    size = size || 25;
     
     this.game = game;
     this.items = {};
     
     for (i = 0; i < menuData.items.length; i++) {
         jsonItem = menuData.items[i];
-        button = new TextButton(game, x, y, jsonItem.label, this.buttonCallback, this, menuData.style.normal.tint, menuData.style.hover.tint, jsonItem);
+        button = new TextButton(game, x, y, jsonItem.label, font, size, this.buttonCallback, this, menuData.style.normal.tint, menuData.style.hover.tint, jsonItem);
         this.items[jsonItem.name] = button;
-        //this.items.push(button);
         y += distance;
     }
 };

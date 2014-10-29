@@ -1,8 +1,10 @@
 /*global Phaser */
 /*global Cookies */
 
-var TextSwitch = function (game, x, y, label, connectedSetting, negate, normalColor, hoverColor) {
+var TextSwitch = function (game, x, y, label, font, size, connectedSetting, negate, normalColor, hoverColor) {
     'use strict';
+    size = size || 25;
+    
     Phaser.Button.call(this, game, x, y, '', this.changeSetting, this);
     this.anchor.setTo(0.5, 0.5);
     
@@ -11,13 +13,13 @@ var TextSwitch = function (game, x, y, label, connectedSetting, negate, normalCo
     this.connectedSetting = connectedSetting;
     this.negate = negate || false;
     
-    this.label = this.game.add.bitmapText(0, 0, 'batmanForever', label, 25);
+    this.label = this.game.add.bitmapText(0, 0, font, label, size);
     this.label.x = -this.label.width / 2;
     this.label.tint = this.normalColor;
     this.label.align = 'center';
     this.addChild(this.label);
     
-    this.valueLabel = this.game.add.bitmapText(0, 0, 'batmanForever', 'On', 25);
+    this.valueLabel = this.game.add.bitmapText(0, 0, font, 'On', size);
     this.valueLabel.x = this.label.x + this.label.width  + 30;
     this.valueLabel.tint = this.normalColor;
     this.valueLabel.align = 'center';

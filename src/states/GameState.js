@@ -135,7 +135,7 @@ Invaders.Game.prototype.setupFinish = function () {
 Invaders.Game.prototype.setupHUD = function () {
     'use strict';
 
-    this.pointsLabel = this.game.add.bitmapText(0, 0, 'batmanForever', '0 points', 25);
+    this.pointsLabel = this.game.add.bitmapText(0, 0, this.font, '0 points', 25);
 };
 
 Invaders.Game.prototype.setupEnemies = function () {

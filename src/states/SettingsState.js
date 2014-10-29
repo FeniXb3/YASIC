@@ -26,7 +26,7 @@ Invaders.Settings.prototype.displayOptions = function () {
     var x = Config.MAP_WIDTH / 2,
         y = Config.MAP_HEIGHT * 6 / 7 + 20,
         distance = 30;
-    this.sfxOption = new TextSwitch(this.game, x, y, 'Sound effects', 'muteSFX', true);
+    this.sfxOption = new TextSwitch(this.game, x, y, 'Sound effects', this.font, 25, 'muteSFX', true);
     y += distance;
-    this.backButton = new TextButton(this.game, x, y, 'Back', this.goBackToMainMenu, this);
+    this.backButton = new TextButton(this.game, x, y, 'Back', this.font, 25,  this.goBackToMainMenu, this);
 };

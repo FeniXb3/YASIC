@@ -16,11 +16,6 @@ Invaders.MainMenu.prototype.create = function () {
     this.displayMenu();
 };
 
-Invaders.MainMenu.prototype.goToGitHub = function () {
-    'use strict';
-    window.open('https://github.com/FeniXb3/YASIC', '_blank');
-};
-
 Invaders.MainMenu.prototype.displayInfo = function () {
     'use strict';
     var i,
@@ -54,30 +49,11 @@ Invaders.MainMenu.prototype.displayInfo = function () {
     this.pointsLabel.tint = 0xCCBBFF;
 };
 
-Invaders.MainMenu.prototype.displayTitle = function () {
-    'use strict';
-    this.title = this.game.add.bitmapText(0, 0, 'batmanForever',  'YASIC', 62);
-    this.title.x = Config.MAP_WIDTH / 2 - this.title.width / 2;
-    this.title.y = Config.MAP_HEIGHT / 12;
-    this.title.tint = 0xBBAAEE;
-
-    this.titleLong = this.game.add.bitmapText(0, 0, 'batmanForever',  'Yet Another Space Invaders Clone', 24);
-    this.titleLong.x = Config.MAP_WIDTH / 2 - this.titleLong.width / 2;
-    this.titleLong.y = Config.MAP_HEIGHT / 6;
-    this.titleLong.tint = 0xBBAAEE;
-};
-
 Invaders.MainMenu.prototype.displayMenu = function () {
     'use strict';
     var x = Config.MAP_WIDTH / 2,
         y = Config.MAP_HEIGHT * 6 / 7 + 20,
         distance = 30;
     
-    this.menu = new Menu(this.game, x, y, distance, this.menus.main);
-};
-
-Invaders.MainMenu.prototype.displayForkMe = function () {
-    'use strict';
-    this.forkMeButton = this.add.button(Config.MAP_WIDTH, 0, 'forkme', this.goToGitHub, this, 0, 0, 0);
-    this.forkMeButton.anchor.setTo(1, 0);
+    this.menu = new Menu(this.game, x, y, distance, this.menus.main, this.font, 25);
 };

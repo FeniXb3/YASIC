@@ -25,13 +25,13 @@ Invaders.GameOver.prototype.displayMenu = function () {
         y = Config.MAP_HEIGHT * 5 / 7,
         distance = 30;
     
-    this.menu = new Menu(this.game, x, y, distance, this.menus.gameover);
+    this.menu = new Menu(this.game, x, y, distance, this.menus.gameover, this.font, 25);
 };
 
 Invaders.GameOver.prototype.displayGameOver = function () {
     'use strict';
-    this.gameOverLabel = this.game.add.bitmapText(0, 0, 'batmanForever',  'GAME OVER', 52);
-    this.pointsLabel = this.game.add.bitmapText(0, 0, 'batmanForever',  '0 points', 32);
+    this.gameOverLabel = this.game.add.bitmapText(0, 0, this.font,  'GAME OVER', 52);
+    this.pointsLabel = this.game.add.bitmapText(0, 0, this.font,  '0 points', 32);
     this.updateLabels();
 };
 
