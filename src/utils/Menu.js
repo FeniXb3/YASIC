@@ -1,7 +1,7 @@
 /*jslint plusplus: true */
 /*global TextButton */
 
-var Menu = function (game, x, y, distance, menuData, font, size) {
+var Menu = function (game, x, y, distance, menuData, font, size, backItem) {
     'use strict';
     var i,
         button,
@@ -17,6 +17,14 @@ var Menu = function (game, x, y, distance, menuData, font, size) {
         button = new TextButton(game, x, y, jsonItem.label, font, size, this.buttonCallback, this, menuData.style.normal.tint, menuData.style.hover.tint, jsonItem);
         this.items[jsonItem.name] = button;
         y += distance;
+    }
+    
+    if (backItem !== undefined) {
+        backItem.label = backItem.label || "Back";
+        
+        button = new TextButton(game, x, y, backItem.label, font, size, this.buttonCallback, this,
+                                menuData.style.normal.tint, menuData.style.hover.tint, { type: "state", "data": backItem.data});
+        this.items.back = button;
     }
 };
 

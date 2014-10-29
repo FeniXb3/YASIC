@@ -13,6 +13,12 @@
                 "name": "settings",
                 "type": "state",
                 "data": "Settings"
+            },
+            {
+                "label": "Credits",
+                "name": "credits",
+                "type": "state",
+                "data": "Credits"
             }
         ],
         "style": {
@@ -44,6 +50,55 @@
                 "name": "twitter",
                 "type": "link",
                 "data": "http://twitter.com/fenixb3"
+            }
+        ],
+        "style": {
+            "normal": {
+                "tint": 11184810
+            },
+            "hover": {
+                "tint": 14540253
+            }
+        }
+    },
+    "credits": {
+        "name": "Credits",
+        "items": [
+            {
+                "label": "Background by StumpyStruts @ OpenGameArt",
+                "name": "enemies",
+                "type": "link",
+                "data": "http://opengameart.org/content/space-background-2"
+            },
+            {
+                "label": "Enemy sprites by C-TOY @ OpenGameArt",
+                "name": "enemies",
+                "type": "link",
+                "data": "http://opengameart.org/content/spaceships-drakir"
+            },
+            {
+                "label": "Hero and barrier sprites by Skorpio @ OpenGameArt",
+                "name": "hero",
+                "type": "link",
+                "data": "http://opengameart.org/content/spaceships-from-parts-part2artcom"
+            },
+            {
+                "label": "Explosion sprite by GameProgrammingSlave @ OpenGameArt",
+                "name": "explosion",
+                "type": "link",
+                "data": "http://opengameart.org/content/explosions"
+            },
+            {
+                "label": "Sounds come from freeSFX website",
+                "name": "sounds",
+                "type": "link",
+                "data": "http://www.freesfx.co.uk/"
+            },
+            {
+                "label": "Font Batman Forever Alternate from Font-Zone",
+                "name": "batmanForever",
+                "type": "link",
+                "data": "http://www.font-zone.com/download.php?fid=112"
             }
         ],
         "style": {
