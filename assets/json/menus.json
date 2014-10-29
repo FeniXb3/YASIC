@@ -1,0 +1,58 @@
+{
+    "main": {
+        "name": "Main menu",
+        "items": [
+            {
+                "label": "Start game",
+                "name": "start",
+                "type": "state",
+                "data": "Game"
+            },
+            {
+                "label": "Settings",
+                "name": "settings",
+                "type": "state",
+                "data": "Settings"
+            }
+        ],
+        "style": {
+            "normal": {
+                "tint": 11184810
+            },
+            "hover": {
+                "tint": 14540253
+            }
+        }
+    },
+    "gameover": {
+        "name": "Game over menu",
+        "items": [
+            {
+                "label": "Restart game",
+                "name": "restart",
+                "type": "state",
+                "data": "Game"
+            },
+            {
+                "label": "Main menu",
+                "name": "mainMenu",
+                "type": "state",
+                "data": "MainMenu"
+            },
+            {
+                "label": "Follow me on Twitter",
+                "name": "twitter",
+                "type": "link",
+                "data": "http://twitter.com/fenixb3"
+            }
+        ],
+        "style": {
+            "normal": {
+                "tint": 11184810
+            },
+            "hover": {
+                "tint": 14540253
+            }
+        }
+    }
+}

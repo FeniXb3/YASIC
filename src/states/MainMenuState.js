@@ -3,6 +3,7 @@
 /*global Phaser */
 /*global TextButton */
 /*jslint plusplus: true */
+/*global Menu */
 
 Invaders.MainMenu = function (game) { 'use strict'; };
 Invaders.MainMenu.prototype = Object.create(Invaders.Base.prototype);
@@ -13,16 +14,6 @@ Invaders.MainMenu.prototype.create = function () {
 
     this.displayInfo();
     this.displayMenu();
-};
-
-Invaders.MainMenu.prototype.startGame = function () {
-    'use strict';
-    this.game.state.start('Game');
-};
-
-Invaders.MainMenu.prototype.openSettings = function () {
-    'use strict';
-    this.game.state.start('Settings');
 };
 
 Invaders.MainMenu.prototype.goToGitHub = function () {
@@ -81,9 +72,8 @@ Invaders.MainMenu.prototype.displayMenu = function () {
     var x = Config.MAP_WIDTH / 2,
         y = Config.MAP_HEIGHT * 6 / 7 + 20,
         distance = 30;
-    this.startButton = new TextButton(this.game, x, y, 'Start game', this.startGame, this);
-    y += distance;
-    this.settingsButton = new TextButton(this.game, x, y, 'Settings', this.openSettings, this);
+    
+    this.menu = new Menu(this.game, x, y, distance, this.menus.main);
 };
 
 Invaders.MainMenu.prototype.displayForkMe = function () {

@@ -1,6 +1,6 @@
 /*global Phaser */
 
-var TextButton = function (game, x, y, label, callback, callbackContext, normalColor, hoverColor) {
+var TextButton = function (game, x, y, label, callback, callbackContext, normalColor, hoverColor, jsonItem) {
     'use strict';
     Phaser.Button.call(this, game, x, y, '', callback, callbackContext);
     this.anchor.setTo(0.5, 0.5);
@@ -13,6 +13,10 @@ var TextButton = function (game, x, y, label, callback, callbackContext, normalC
     this.label.tint = this.normalColor;
     this.label.align = 'center';
     this.addChild(this.label);
+    
+    if (jsonItem !== undefined) {
+        this.item = jsonItem;
+    }
     
     this.events.onInputOver.add(this.onButtonHover, this);
     this.events.onInputOut.add(this.onButtonOut, this);

@@ -70,13 +70,13 @@ describe('MainMenu ', function () {
     
     describe('Start button', function () {
         it('should be displayed with "Start game" text', function () {
-            expect(mainMenuState.startButton instanceof TextButton).toBeTruthy();
-            expect(mainMenuState.startButton.label.text).toEqual('Start game');
+            expect(mainMenuState.menu.items.start instanceof TextButton).toBeTruthy();
+            expect(mainMenuState.menu.items.start.label.text).toEqual('Start game');
         });
 
         describe('when clicked', function () {
             beforeEach(function (done) {
-                mainMenuState.startButton.events.onInputUp.dispatch();
+                mainMenuState.menu.items.start.events.onInputUp.dispatch();
                 setTimeout(function () {
                     done();
                 }, 1000);
@@ -91,13 +91,13 @@ describe('MainMenu ', function () {
         
     describe('Options button', function () {
         it('should be displayed with "Settings" text', function () {
-            expect(mainMenuState.settingsButton instanceof TextButton).toBeTruthy();
-            expect(mainMenuState.settingsButton.label.text).toEqual('Settings');
+            expect(mainMenuState.menu.items.settings instanceof TextButton).toBeTruthy();
+            expect(mainMenuState.menu.items.settings.label.text).toEqual('Settings');
         });
 
         describe('when clicked', function () {
             beforeEach(function (done) {
-                mainMenuState.settingsButton.events.onInputUp.dispatch();
+                mainMenuState.menu.items.settings.events.onInputUp.dispatch();
                 setTimeout(function () {
                     done();
                 }, 1000);

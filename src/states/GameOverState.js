@@ -25,11 +25,7 @@ Invaders.GameOver.prototype.displayMenu = function () {
         y = Config.MAP_HEIGHT * 5 / 7,
         distance = 30;
     
-    this.startButton = new TextButton(this.game, x, y, 'Restart game', this.startGame, this);
-    y += distance;
-    this.mainmenuButton = new TextButton(this.game, x, y, 'Main menu', this.openMainMenu, this);
-    y += distance * 2;
-    this.twitterButton = new TextButton(this.game, x, y, 'twitter: @fenixb3', this.goToTwitter, this);
+    this.menu = new Menu(this.game, x, y, distance, this.menus.gameover);
 };
 
 Invaders.GameOver.prototype.displayGameOver = function () {
@@ -61,19 +57,4 @@ Invaders.GameOver.prototype.updateLabels = function () {
         this.pointsLabel.tint = defaultTint;
         this.game.add.tween(this.pointsLabel).to({ tint: targetTint }, 0, Phaser.Easing.Bounce.In, true);
     }
-};
-
-Invaders.GameOver.prototype.startGame = function () {
-    'use strict';
-    this.game.state.start('Game');
-};
-
-Invaders.GameOver.prototype.openMainMenu = function () {
-    'use strict';
-    this.game.state.start('MainMenu');
-};
-
-Invaders.GameOver.prototype.goToTwitter = function () {
-    'use strict';
-    window.open('http://twitter.com/fenixb3', '_blank');
 };

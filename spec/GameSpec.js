@@ -29,7 +29,7 @@ describe('Game', function () {
         mainMenuStateCreateMethod = Invaders.MainMenu.prototype.create;
         spyOn(Invaders.MainMenu.prototype, 'create').and.callFake(function () {
             mainMenuStateCreateMethod.call(game.state.states.MainMenu);
-            game.state.states.MainMenu.startButton.events.onInputUp.dispatch();
+            game.state.states.MainMenu.menu.items.start.events.onInputUp.dispatch();
             setTimeout(function () {
                 gameState = game.state.states.Game;
                 hero = gameState.hero;

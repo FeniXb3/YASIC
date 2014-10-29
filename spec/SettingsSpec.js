@@ -26,7 +26,7 @@ describe('Settings ', function () {
             mainMenuStateCreateMethod.call(game.state.states.MainMenu);
             setTimeout(function () {
                 if (!goingBack) {
-                    game.state.states.MainMenu.settingsButton.events.onInputUp.dispatch();
+                    game.state.states.MainMenu.menu.items.settings.events.onInputUp.dispatch();
                     setTimeout(function () {
                         settingsState = game.state.states.Settings;
                         done();
@@ -79,7 +79,7 @@ describe('Settings ', function () {
                     goingBack = true;
                     settingsState.backButton.events.onInputUp.dispatch();
                     setTimeout(function () {
-                        game.state.states.MainMenu.startButton.events.onInputUp.dispatch();
+                        game.state.states.MainMenu.menu.items.start.events.onInputUp.dispatch();
                         setTimeout(function () {
                             done();
                         }, 1500);

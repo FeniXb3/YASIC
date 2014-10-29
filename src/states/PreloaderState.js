@@ -55,7 +55,8 @@ Invaders.Preloader.prototype = {
         // JSON data
         this.load.json('enemyData', 'assets/json/enemies.json');
         this.load.json('heroData', 'assets/json/hero.json');
-        
+        this.load.json('menusData', 'assets/json/menus.json');
+      
         // sounds
         this.load.audio('engine', 'assets/audio/engine.mp3');
         this.load.audio('laser', 'assets/audio/laser.mp3');

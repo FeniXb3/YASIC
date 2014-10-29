@@ -17,6 +17,9 @@ Invaders.Base.prototype = {
         if (options.displayForkMe !== false) {
             this.displayForkMe();
         }
+        if (options.loadMenusData !== false) {
+            this.loadMenusData();
+        }
     },
     goToGitHub: function () {
         'use strict';
@@ -38,5 +41,9 @@ Invaders.Base.prototype = {
         'use strict';
         this.forkMeButton = this.add.button(Config.MAP_WIDTH, 0, 'forkme', this.goToGitHub, this, 0, 0, 0);
         this.forkMeButton.anchor.setTo(1, 0);
+    },
+    loadMenusData: function () {
+        'use strict';
+        this.menus = this.game.cache.getJSON('menusData');
     }
 };
