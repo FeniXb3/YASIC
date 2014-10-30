@@ -39,13 +39,13 @@ Invaders.MainMenu.prototype.displayInfo = function () {
     for (i = 0; i < this.enemyData.length; i++) {
         y = i * 80 + 260;
         this.add.sprite(x, y, this.enemyData[i].name).anchor.setTo(0.5, 0.5);
-        this.pointsLabel = this.game.add.bitmapText(x + 100, y, 'batmanForever', '= ' + this.enemyData[i].reward + ' points', 25);
+        this.pointsLabel = this.game.add.bitmapText(x + 100, y, this.font, '= ' + this.enemyData[i].reward + ' points', 25);
         this.pointsLabel.tint = 0xB0A0E0;
     }
     y += 80;
 
     this.add.sprite(x, y, 'observer').anchor.setTo(0.5, 0.5);
-    this.pointsLabel = this.game.add.bitmapText(x + 100, y, 'batmanForever', '= ?? points', 25);
+    this.pointsLabel = this.game.add.bitmapText(x + 100, y, this.font, '= ?? points', 25);
     this.pointsLabel.tint = 0xCCBBFF;
 };
 

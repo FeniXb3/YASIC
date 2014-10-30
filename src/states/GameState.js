@@ -37,6 +37,8 @@ Invaders.Game.prototype.create = function () {
 
     this.setupHero();
     this.setupBarriers();
+    
+    this.gameStart = this.game.time.now;
 };
 
 Invaders.Game.prototype.update = function () {
@@ -66,15 +68,18 @@ Invaders.Game.prototype.levelCheck = function () {
 
 Invaders.Game.prototype.isTheEnd = function () {
     'use strict';
-    var that = this;
+    var that = this,
+        gameTime;
+    
     if (!this.shaken) {
         this.hero.blocked = true;
+        gameTime = this.game.time.now - this.gameStart;
         clearTimeout(this.specialEnemy.reviveTimeout);
         this.shaken = true;
         this.shake.shake(40);
 
         setTimeout(function () {
-            that.game.state.start('GameOver', true, false, that.points);
+            that.game.state.start('GameOver', true, false, that.points, gameTime, that.kills);
         }, 3000);
     }
 };
@@ -140,9 +145,17 @@ Invaders.Game.prototype.setupHUD = function () {
 
 Invaders.Game.prototype.setupEnemies = function () {
     'use strict';
+    var i;
+    
     this.enemyData =  this.game.cache.getJSON('enemyData');
     this.enemies = new EnemyGroup(this.game, 8, this.enemyData);
     this.specialEnemy = new SpecialEnemy(this.game, 0, 50, 300);
+    
+    this.kills = {};
+    for (i = 0; i < this.enemyData.length; i++) {
+        this.kills[this.enemyData[i].name] = 0;
+    }
+    this.kills.observer = 0;
 };
 
 Invaders.Game.prototype.setupHero = function () {
@@ -229,6 +242,11 @@ Invaders.Game.prototype.hitEnemy = function (ship, projectile) {
     'use strict';
     this.points += ship.reward;
     ship.hit();
+    
+    if (!ship.alive) {
+        this.kills[ship.key]++;
+    }
+    
     projectile.hit();
 };
 
